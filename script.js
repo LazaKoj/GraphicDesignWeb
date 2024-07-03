@@ -1,4 +1,3 @@
-/*script.js*/
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById("myModal");
   const modalImg = document.getElementById("img01");
@@ -40,4 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 500);
       }
   }
+
+  // Fade-in effect for elements
+  const fadeInElements = document.querySelectorAll('.grid-item');
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('fade-in');
+              entry.target.classList.remove('hidden');
+          }
+      });
+  }, {
+      threshold: 0.3
+  });
+
+  fadeInElements.forEach(element => {
+      element.classList.add('hidden');
+      observer.observe(element);
+  });
 });
