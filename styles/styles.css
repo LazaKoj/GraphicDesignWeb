@@ -154,8 +154,12 @@ footer {
     }
 
     .grid-container {
+<<<<<<< HEAD
         grid-template-columns: repeat(2, 1fr);
         width: 100%; 
+=======
+        grid-template-columns: repeat(2, 1fr); 
+>>>>>>> 792aeabf0e3b7e6c2bdd1109a908da3330b9822b
     }
 
     .grid-item img {
