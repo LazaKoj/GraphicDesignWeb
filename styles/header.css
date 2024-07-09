@@ -4,8 +4,11 @@ nav {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    background-color: rgb(252, 233, 207);
+    background-color: rgb(251, 243, 232);
     padding: 1em;
+    border-bottom: 1px solid #333;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .nav-left a {

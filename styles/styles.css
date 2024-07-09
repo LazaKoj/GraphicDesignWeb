@@ -3,7 +3,7 @@ body {
     font-family: "Work Sans", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(253, 249, 245);
+    background-color: rgb(251, 243, 232);
     animation: fadeIn 1s ease-in forwards;
 }
 
@@ -23,12 +23,12 @@ main {
 .grid-item {
     overflow: hidden;
     text-align: center;
-    opacity: 0; /* Start hidden */
-    transition: opacity 1s ease; /* Smooth transition */
+    opacity: 0; 
+    transition: opacity 1s ease; 
 }
 
 .grid-item.fade-in {
-    opacity: 1; /* Fade in */
+    opacity: 1; 
 }
 
 .grid-item img {
@@ -57,9 +57,8 @@ main {
 footer {
     text-align: center;
     padding: 0;
-    background-color: rgb(252, 233, 207);
+    background-color: rgb(251, 243, 232);
     color: black;
-    position: fixed;
     width: 100%;
     bottom: 0;
     font-size: 0.8em;
@@ -87,6 +86,10 @@ footer {
     max-width: 700px;
     transition: transform 0.5s ease;
     transform: scale(0.5);
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal.show {
@@ -95,7 +98,7 @@ footer {
 }
 
 .modal-content.show {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .close {
@@ -124,6 +127,18 @@ footer {
     opacity: 1;
 }
 
+#backToTopBtn {
+    display: none; 
+    position: fixed;
+    bottom: 20px; 
+    right: 10px; 
+    z-index: 99; 
+    border: none;
+    cursor: pointer; 
+    padding: 15px;
+    background-color: transparent;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -139,6 +154,12 @@ footer {
     }
 
     .grid-container {
-        grid-template-columns: repeat(1, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%; 
+    }
+
+    .grid-item img {
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 }
