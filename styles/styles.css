@@ -1,10 +1,10 @@
-/*styles.css*/
+/* styles.css */
 body {
     font-family: "Work Sans", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(251, 243, 232);
-    animation: fadeIn 1s ease-in backwards;
+    background-color: rgb(253, 249, 245);
+    animation: fadeIn 1s ease-in forwards;
 }
 
 main {
@@ -17,10 +17,18 @@ main {
     gap: 1em;
     width: 70%;
     margin: 0 auto;
+    padding-bottom: 2em;
 }
 
 .grid-item {
     overflow: hidden;
+    text-align: center;
+    opacity: 0; /* Start hidden */
+    transition: opacity 1s ease; /* Smooth transition */
+}
+
+.grid-item.fade-in {
+    opacity: 1; /* Fade in */
 }
 
 .grid-item img {
@@ -35,10 +43,21 @@ main {
     transform: scale(0.95);
 }
 
+.grid-item h3 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 1em;
+}
+
+.grid-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
 footer {
     text-align: center;
     padding: 0;
-    background-color: rgb(251, 243, 232);
+    background-color: rgb(252, 233, 207);
     color: black;
     position: fixed;
     width: 100%;
@@ -96,6 +115,15 @@ footer {
     cursor: pointer;
 }
 
+.hidden {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -105,10 +133,12 @@ footer {
     }
 }
 
-
-
 @media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); 
     }
 }

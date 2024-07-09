@@ -1,60 +1,119 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById("myModal");
-  const modalImg = document.getElementById("img01");
-  const captionText = document.getElementById("caption");
-  const closeModal = document.getElementsByClassName("close")[0];
+    fetch('images.json')
+        .then(response => response.json())
+        .then(images => {
+            const portfolioContainer = document.getElementById('portfolio');
 
-  document.querySelectorAll('.clickable').forEach(item => {
-      item.addEventListener('click', event => {
-          modal.style.display = "block";
-          modalImg.src = event.target.src;
-          captionText.innerHTML = event.target.alt;
+            images.forEach(image => {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
 
-          // Adding a slight delay to allow the modal to display before applying the show class
-          setTimeout(() => {
-              modal.classList.add('show');
-              modalImg.classList.add('show');
-          }, 10);
-      });
-  });
+                const img = document.createElement('img');
+                img.src = image.src;
+                img.alt = image.title;
+                img.classList.add('clickable');
+                img.loading = 'lazy';  // Enable lazy loading
 
-  closeModal.onclick = function() {
-      modal.classList.remove('show');
-      modalImg.classList.remove('show');
+                const title = document.createElement('h3');
+                title.textContent = image.title;
 
-      // Delay the hiding of the modal to allow the transition to complete
-      setTimeout(() => {
-          modal.style.display = "none";
-      }, 500);
-  }
+                const description = document.createElement('p');
+                description.textContent = image.description;
 
-  modal.onclick = function(event) {
-      if (event.target === modal) {
-          modal.classList.remove('show');
-          modalImg.classList.remove('show');
+                gridItem.appendChild(img);
+                gridItem.appendChild(title);
+                gridItem.appendChild(description);
+                portfolioContainer.appendChild(gridItem);
+            });
 
-          // Delay the hiding of the modal to allow the transition to complete
-          setTimeout(() => {
-              modal.style.display = "none";
-          }, 500);
-      }
-  }
+            // Initialize the modal functionality after images are added
+            initializeModal();
+            // Initialize the fade-in effect for images
+            initializeFadeInEffect();
+        })
+        .catch(error => console.error('Error loading images:', error));
 
-  // Fade-in effect for elements
-  const fadeInElements = document.querySelectorAll('.grid-item');
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('fade-in');
-              entry.target.classList.remove('hidden');
-          }
-      });
-  }, {
-      threshold: 0.3
-  });
-
-  fadeInElements.forEach(element => {
-      element.classList.add('hidden');
-      observer.observe(element);
-  });
+    // Initialize the menu functionality
+    initializeMenu();
 });
+
+function initializeModal() {
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    const captionText = document.getElementById("caption");
+    const closeModal = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll('.clickable').forEach(item => {
+        item.addEventListener('click', event => {
+            modal.style.display = "block";
+            modalImg.src = event.target.src;
+            captionText.innerHTML = event.target.alt;
+
+            setTimeout(() => {
+                modal.classList.add('show');
+                modalImg.classList.add('show');
+            }, 10);
+        });
+    });
+
+    closeModal.onclick = function() {
+        modal.classList.remove('show');
+        modalImg.classList.remove('show');
+
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 500);
+    }
+
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('show');
+            modalImg.classList.remove('show');
+
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 500);
+        }
+    }
+}
+
+function initializeFadeInEffect() {
+    const fadeInElements = document.querySelectorAll('.grid-item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    fadeInElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+function initializeMenu() {
+    const menuToggle = document.querySelector('.menu-button');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+        const navList = document.querySelector('.nav-right');
+        if (!menuOpen) {
+            menuToggle.classList.add('open');
+            navList.classList.remove('fade-out');
+            navList.classList.add('active');
+            menuOpen = true;
+        } else {
+            menuToggle.classList.remove('open');
+            navList.classList.remove('active');
+            navList.classList.add('fade-out');
+            setTimeout(() => {
+                navList.classList.remove('fade-out');
+            }, 1000); 
+            menuOpen = false;
+        }
+    });
+}
