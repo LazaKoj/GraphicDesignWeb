@@ -87,6 +87,10 @@ footer {
     max-width: 700px;
     transition: transform 0.5s ease;
     transform: scale(0.5);
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal.show {
@@ -95,7 +99,7 @@ footer {
 }
 
 .modal-content.show {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .close {
