@@ -3,7 +3,7 @@ body {
     font-family: "Work Sans", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(251, 243, 232);
+    background-color: rgb(233, 219, 255);
     animation: fadeIn 1s ease-in forwards;
 }
 
@@ -154,12 +154,8 @@ footer {
     }
 
     .grid-container {
-<<<<<<< HEAD
         grid-template-columns: repeat(2, 1fr);
         width: 100%; 
-=======
-        grid-template-columns: repeat(2, 1fr); 
->>>>>>> 792aeabf0e3b7e6c2bdd1109a908da3330b9822b
     }
 
     .grid-item img {
