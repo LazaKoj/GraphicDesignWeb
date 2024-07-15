@@ -6,14 +6,16 @@ html, body {
     background-color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden; 
 }
 
 body {
     animation: fadeIn 1s ease-in backwards;
+    display: flex;
+    flex-direction: column;
 }
 
-nav, section.contact, footer {
+nav, footer {
     width: 100%;
 }
 
@@ -26,7 +28,8 @@ nav, section.contact, footer {
     font-family: "Work Sans", sans-serif;
     margin-bottom: 46px;
     color: #ffffff;
-    box-sizing: border-box; /* Ensure padding and borders are included in element's total width and height */
+    box-sizing: border-box; 
+    flex: 1; 
 }
 
 .contact h2 {
@@ -56,7 +59,7 @@ nav, section.contact, footer {
     font-family: "Work Sans", sans-serif;
     background-color: rgb(0, 0, 0);
     width: 100%;
-    box-sizing: border-box; /* Ensure padding and borders are included in element's total width and height */
+    box-sizing: border-box; 
 }
 
 .contact button {
@@ -81,6 +84,7 @@ footer {
     width: 100%;
     font-size: 0.8em;
     flex-shrink: 0;
+    margin-top: auto; 
 }
 
 @keyframes fadeIn {
