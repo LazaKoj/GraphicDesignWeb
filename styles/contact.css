@@ -11,9 +11,11 @@ html, body {
 
 body {
     animation: fadeIn 1s ease-in backwards;
+    display: flex;
+    flex-direction: column;
 }
 
-nav, section.contact, footer {
+nav, footer {
     width: 100%;
 }
 
@@ -27,6 +29,7 @@ nav, section.contact, footer {
     margin-bottom: 46px;
     color: #ffffff;
     box-sizing: border-box; /* Ensure padding and borders are included in element's total width and height */
+    flex: 1; /* Allow the contact section to grow and fill available space */
 }
 
 .contact h2 {
@@ -81,6 +84,7 @@ footer {
     width: 100%;
     font-size: 0.8em;
     flex-shrink: 0;
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 @keyframes fadeIn {
