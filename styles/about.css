@@ -2,7 +2,7 @@ body {
     font-family: "Work Sans", sans-serif;
     margin: 0; 
     padding: 0;
-    background-color: rgb(251, 243, 232);
+    background-color: rgb(0, 0, 0);
     animation: fadeIn 1s ease-in backwards;
 }
 
@@ -28,7 +28,8 @@ main .content .image img {
 main .content .text {
     flex: 2;
     padding-left: 60px;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
+    color: rgb(255, 255, 255); 
 }
 
 main .content .text h1 {
@@ -45,8 +46,8 @@ main .content .text p {
 footer {
     text-align: center;
     
-    background-color: rgb(251, 243, 232);
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     width: 100%;
     font-size: 0.8em;
 }

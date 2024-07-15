@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the menu functionality
     initializeMenu();
+    // Initialize the animated text effect
+    initializeAnimatedText();
 });
 
 function initializeModal() {
@@ -117,7 +119,6 @@ function initializeMenu() {
         }
     });
 }
-
 // Get the button
 let mybutton = document.getElementById("backToTopBtn");
 
