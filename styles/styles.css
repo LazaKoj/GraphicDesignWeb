@@ -153,6 +153,17 @@ footer {
         height: auto;
         aspect-ratio: 1 / 1;
     }
+
+    .landing-page {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1em;
+    }
+
+    .landing-text span {
+        font-size: 1.5em;
+    }
 }
 
 .landing-page {

@@ -49,8 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading images:', error));
 
-    // Initialize the menu functionality
-    initializeMenu();
+    // Get the button
+    let mybutton = document.getElementById("backToTopBtn");
+
+    // When the user scrolls down px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document smoothly
+    mybutton.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 });
 
 function initializeModal() {
@@ -110,45 +126,3 @@ function initializeFadeInEffect() {
         observer.observe(element);
     });
 }
-
-function initializeMenu() {
-    const menuToggle = document.querySelector('.menu-button');
-    let menuOpen = false;
-
-    menuToggle.addEventListener('click', () => {
-        const navList = document.querySelector('.nav-right');
-        if (!menuOpen) {
-            menuToggle.classList.add('open');
-            navList.classList.remove('fade-out');
-            navList.classList.add('active');
-            menuOpen = true;
-        } else {
-            menuToggle.classList.remove('open');
-            navList.classList.remove('active');
-            navList.classList.add('fade-out');
-            setTimeout(() => {
-                navList.classList.remove('fade-out');
-            }, 1000); 
-            menuOpen = false;
-        }
-    });
-}
-
-// Get the button
-let mybutton = document.getElementById("backToTopBtn");
-
-// When the user scrolls down px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-    } else {
-        mybutton.style.display = "none";
-    }
-}
-
-// When the user clicks on the button, scroll to the top of the document smoothly
-mybutton.addEventListener("click", function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
