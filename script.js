@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const landingPage = document.getElementById('landingPage');
+
+    if (!sessionStorage.getItem('landingDisplayed')) {
+        // Display the landing page
+        landingPage.style.display = 'flex';
+
+        // Hide the landing page after the animation ends
+        setTimeout(() => {
+            landingPage.style.display = 'none';
+            sessionStorage.setItem('landingDisplayed', 'true');
+        }, 6000); // 2 seconds for slideIn + 4 seconds for fadeOut
+    } else {
+        // Immediately hide the landing page if already visited
+        landingPage.style.display = 'none';
+    }
+
     fetch('images.json')
         .then(response => response.json())
         .then(images => {
@@ -35,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the menu functionality
     initializeMenu();
-    // Initialize the animated text effect
-    initializeAnimatedText();
 });
 
 function initializeModal() {
@@ -119,10 +133,11 @@ function initializeMenu() {
         }
     });
 }
+
 // Get the button
 let mybutton = document.getElementById("backToTopBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
+// When the user scrolls down px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {

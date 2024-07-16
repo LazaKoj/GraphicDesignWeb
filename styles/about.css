@@ -36,6 +36,7 @@ main .content .text h1 {
     font-family: "Work Sans", sans-serif;
     font-size: 36px;
     margin-bottom: 10px;
+    color: lightgreen;
 }
 
 main .content .text p {
