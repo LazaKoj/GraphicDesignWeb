@@ -1,18 +1,5 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $secretKey = "YOUR_SECRET_KEY";
-    $captchaResponse = $_POST['g-recaptcha-response'];
-
-    // Verify the reCAPTCHA response
-    $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
-    $response = file_get_contents($verifyUrl . '?secret=' . $secretKey . '&response=' . $captchaResponse);
-    $responseData = json_decode($response);
-
-    if (!$responseData->success) {
-        echo "reCAPTCHA verification failed. Please try again.";
-        exit;
-    }
-
     $firstName = htmlspecialchars(trim($_POST['first-name']));
     $lastName = htmlspecialchars(trim($_POST['last-name']));
     $email = htmlspecialchars(trim($_POST['email']));
