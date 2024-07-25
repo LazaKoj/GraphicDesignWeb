@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const landingPage = document.getElementById('landingPage');
+    const hasVisited = sessionStorage.getItem('hasVisited');
 
-    if (!sessionStorage.getItem('landingDisplayed')) {
-        // Display the landing page
-        landingPage.style.display = 'flex';
-
-        // Hide the landing page after the animation ends
+    if (!hasVisited) {
+        landingPage.classList.remove('hidden');
         setTimeout(() => {
-            landingPage.style.display = 'none';
-            sessionStorage.setItem('landingDisplayed', 'true');
-        }, 6000); // 2 seconds for slideIn + 4 seconds for fadeOut
+            landingPage.classList.add('hidden');
+            setTimeout(() => {
+                landingPage.style.display = 'none';
+            }, 1000);
+        }, 4000);
+        sessionStorage.setItem('hasVisited', 'true');
     } else {
-        // Immediately hide the landing page if already visited
         landingPage.style.display = 'none';
     }
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img.src = image.src;
                 img.alt = image.title;
                 img.classList.add('clickable');
-                img.loading = 'lazy';  // Enable lazy loading
+                img.loading = 'lazy';
 
                 const title = document.createElement('h3');
                 title.textContent = image.title;
@@ -42,17 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 portfolioContainer.appendChild(gridItem);
             });
 
-            // Initialize the modal functionality after images are added
-            initializeModal();
-            // Initialize the fade-in effect for images
+            initializeModal(images);
             initializeFadeInEffect();
         })
         .catch(error => console.error('Error loading images:', error));
 
-    // Get the button
     let mybutton = document.getElementById("backToTopBtn");
 
-    // When the user scrolls down px from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
@@ -63,28 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // When the user clicks on the button, scroll to the top of the document smoothly
     mybutton.addEventListener("click", function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
 
-function initializeModal() {
+function initializeModal(images) {
     const modal = document.getElementById("myModal");
     const modalImg = document.getElementById("img01");
     const captionText = document.getElementById("caption");
     const closeModal = document.getElementsByClassName("close")[0];
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
 
-    document.querySelectorAll('.clickable').forEach(item => {
+    document.querySelectorAll('.clickable').forEach((item, index) => {
         item.addEventListener('click', event => {
             modal.style.display = "block";
-            modalImg.src = event.target.src;
-            captionText.innerHTML = event.target.alt;
-
-            setTimeout(() => {
-                modal.classList.add('show');
-                modalImg.classList.add('show');
-            }, 10);
+            currentIndex = index;
+            showImage();
         });
     });
 
@@ -97,15 +90,24 @@ function initializeModal() {
         }, 500);
     }
 
-    modal.onclick = function(event) {
-        if (event.target === modal) {
-            modal.classList.remove('show');
-            modalImg.classList.remove('show');
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+        showImage();
+    });
 
-            setTimeout(() => {
-                modal.style.display = "none";
-            }, 500);
-        }
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+        showImage();
+    });
+
+    function showImage() {
+        modalImg.src = images[currentIndex].src;
+        captionText.innerHTML = images[currentIndex].title;
+
+        setTimeout(() => {
+            modal.classList.add('show');
+            modalImg.classList.add('show');
+        }, 10);
     }
 }
 

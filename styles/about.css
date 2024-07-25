@@ -1,42 +1,53 @@
 body {
     font-family: "Work Sans", sans-serif;
-    margin: 0; 
+    margin: 0;
     padding: 0;
-    background-color: rgb(0, 0, 0);
-    animation: fadeIn 1s ease-in backwards;
+    background-color: #01242d;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 main .content {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     padding: 60px;
-    flex-wrap: wrap;
     margin-bottom: 65px;
 }
 
 main .content .image {
-    flex: 1;
-    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 main .content .image img {
     width: 100%;
     height: auto;
-    padding-left: 50px;
+    max-width: 400px;
 }
 
 main .content .text {
-    flex: 2;
-    padding-left: 60px;
-    padding-bottom: 20px;
-    color: rgb(255, 255, 255); 
-}
-
-main .content .text h1 {
-    font-family: "Work Sans", sans-serif;
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: lightgreen;
+    padding: 0 20px;
 }
 
 main .content .text p {
@@ -46,20 +57,11 @@ main .content .text p {
 
 footer {
     text-align: center;
-    
-    background-color: rgb(0, 0, 0);
+    background-color: #01242d;
     color: rgb(255, 255, 255);
     width: 100%;
     font-size: 0.8em;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
@@ -72,12 +74,7 @@ footer {
     }
 
     main .content .text {
-        padding-left: 20px;
-        padding-bottom: 20px; /* Added padding at the bottom */
-    }
-
-    main .content .text h1 {
-        font-size: 28px;
+        padding: 0 20px;
     }
 
     main .content .text p {
@@ -87,17 +84,15 @@ footer {
 
 @media (max-width: 480px) {
     main .content {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 20px;
     }
 
     main .content .image {
-        margin-right: 0;
         margin-bottom: 20px;
     }
 
     main .content .text {
-        padding-left: 0;
-        padding-bottom: 50px; /* Added padding at the bottom */
+        padding: 0 20px;
+        padding-bottom: 50px;
     }
 }
