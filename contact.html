@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graphic Design Portfolio</title>
-    <link rel="stylesheet" href="styles/contact.css">
-    <link rel="stylesheet" href="styles/header.css">
-</head>
-<body>
-    <nav> 
-        <div class="nav-left">
-            <img src="images/COLORAMALOGO.png">
-        </div>
-        <div class="menu-button">
-            <div class="hamburger-menu"></div>
-        </div>
-        <div class="nav-right">
-            <ul class="nav-list">
-                <li><a href="index.html">Work</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <form action="send_contact.php" method="post">
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first-name" required>
-            
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last-name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-    <footer>
-        <p>2024 Colorama print. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
-    <script src="menu.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Graphic Design Portfolio</title>
+        <link rel="stylesheet" href="styles/contact.css">
+        <link rel="stylesheet" href="styles/header.css">
+    </head>
+    <body>
+        <nav> 
+            <div class="nav-left">
+                <img src="images/COLORAMALOGO.png">
+            </div>
+            <div class="menu-button">
+                <div class="hamburger-menu"></div>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-list">
+                    <li><a href="index.html">Work</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="5a301dee-0b07-4a62-a7bf-35f2f9a854a1">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+                
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <footer>
+            <p>2024 Colorama print. All rights reserved.</p>
+        </footer>
+        <script src="script.js"></script>
+        <script src="menu.js"></script>
+    </body>
 </html>
